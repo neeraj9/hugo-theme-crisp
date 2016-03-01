@@ -1,6 +1,7 @@
 {{ $baseurl := .Site.BaseURL }}
+{{ if eq .Type "post" }}
 <section id="{{ .Slug }}" class="{{ .Section }}">
-	<h3 class="post-title">
+	<h2 class="post-title">
 		<a href="{{ .Permalink }}">{{ .Title }}</a>
 		<span class="separator"> &middot; </span>
 		<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
@@ -15,4 +16,12 @@
     	{{ end }}
 		</span>
 	</h3>
+  {{ if not .Params.noread }}
+    <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>{{.ReadingTime}} min. read</em></span>
+  {{ end }}
+
+  <article class="post-description">
+    {{ .Description }}
+  </article>
 </section>
+{{ end }}

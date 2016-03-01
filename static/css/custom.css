@@ -1,0 +1,40 @@
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
+}
+
+blockquote {
+  font-size: 1em;
+}
+
+th, td {
+    border-left: 1px solid #cbcbcb;
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: 0.5em 1em;
+}
+
+td {
+    border-bottom: 1px solid #cbcbcb;
+}
+
+tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
+
+td:first-child,
+th:first-child {
+    border-left-width: 0;
+}
+
+thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+}

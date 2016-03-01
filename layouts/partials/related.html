@@ -1,12 +1,16 @@
 <div id="related">
   <section>
-    <h5>Pour un peu plus de lecture ...</h5>
+    <h5>Related Pages</h5>
     <ul>
-      {{ range first 5 .RelatedPages }}
-      <li>
-        <a href="{{ .Permalink }}">{{ .Title }} - {{ .ReadingTime }} Minutes</a>
-      </li>
-      {{ end }}
+{{ $page_link := .Permalink }}
+{{ $categories := .Params.categories }}
+{{ range $page := .Site.Pages }}
+{{ $has_common_categories := intersect $categories .Params.categories | len | lt 0 }}
+{{ if and $has_common_categories (ne $page_link $page.Permalink) (lt ($.Scratch.Get "$c") 5)}}
+{{ $.Scratch.Add "$c" 1 }}
+<li><a href="{{ $page.Permalink }}">{{ $page.Title }}</a></li>
+{{ end }}
+{{ end }}
     </ul>
   </section>
 </div>
